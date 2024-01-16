@@ -26,6 +26,43 @@ public class ArrayImpl implements Array {
 	}
 	
 	@Override
+	public void push(int index, Object object) {
+		if (index > this.array.length-1 || index < 0) {
+			System.out.println("The given index is out of range.");
+		}
+		else {
+			int size = this.array.length+1;
+			Object[] array = new Object[size];
+			for (int i = 0; i < index; i++) {
+				array[i] = this.array[i];
+			}
+			array[index] = object;
+			for (int i = index+1; i < array.length; i++) {
+				array[i] = this.array[i-1];
+			}
+			this.array = array;
+		}
+	}
+
+	@Override
+	public void pop(int index) {
+		if (index > this.array.length-1 || index < 0) {
+			System.out.println("The given index is out of range.");
+		}
+		else {
+			int size = this.array.length-1;
+			Object[] array = new Object[size];
+			for (int i = 0; i < index; i++) {
+				array[i] = this.array[i];
+			}
+			for (int i = index+1; i < this.array.length; i++) {
+				array[i-1] = this.array[i];
+			}
+			this.array = array;
+		}
+	}
+	
+	@Override
 	public String toString() {
 		StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.append("[");
