@@ -10,6 +10,7 @@ public class Trapezium extends Area {
 	@Override
 	public String getArea() {
 		double area = 0.5 * ((a + b) * c);
+		Locale.setDefault(Locale.US);
 		return new DecimalFormat("#,###.00").format(area);
 	}
 
